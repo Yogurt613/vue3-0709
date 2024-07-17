@@ -23,7 +23,7 @@ export default {
      this.count =0;
     }
   },
-
+   
   /*完成組件掛載後要做的事情*/
   //dom的節點已經插入頁面
   mounted() {

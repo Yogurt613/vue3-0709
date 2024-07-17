@@ -1,4 +1,4 @@
-<!--建立一個簡單的待辦事項清單應用程式，要求如下：
+<!--建立一個簡單的待辦事項清單應用程式：
 1. 新增、刪除待辦事項
 新增使用v-model刪除用v-on 綁定事件
 新增待辦事項：於input欄位輸入後通過按下“新增”按鈕或Enter鍵來添加新的待辦事項。
@@ -12,7 +12,7 @@
     <div id="app">
 
         <h2>Todo List</h2>
-        <li v-for="number in 5" :key="number">{{ number }}</li>
+        <li v-for="number in numbers" :key="number">{{ number }}</li>
         <!-- <form> -->
         <div class="input-group">
             <input v-model="newTodo" @keyup.enter="addtodo" type="text" class="form-control" placeholder="請輸入代辦事項">
