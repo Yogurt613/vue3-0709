@@ -3,7 +3,7 @@
     <div id="app" class="container mt-4">
         <!-- 標題和購物車按鈕區域 -->
         <div class="d-flex justify-content-between align-items-center">
-            <h2>精選商品1</h2>
+            <h2>精選商品</h2>
 
             <!-- 按鈕的 click 事件會顯示購物車模態框 -->
             <button type="button" class="btn btn-secondary" @click="showCart = true" data-bs-toggle="modal"
