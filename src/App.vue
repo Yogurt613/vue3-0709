@@ -11,8 +11,8 @@
 // import Test3 from './components/test3.vue';
 // import Test4 from './components/test4.vue';
 // import Test5 from './components/test5.vue';
-import Test6 from './components/test6.vue';
-
+// import Test6 from './components/test6.vue';
+import Test7 from './components/test7.vue';
 </script>
 
 <template>
@@ -29,7 +29,7 @@ import Test6 from './components/test6.vue';
     <test4/>
     <test5/>
     <test6/>
-    
+    <test7/>
   </div>
 </template>
 
