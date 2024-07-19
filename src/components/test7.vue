@@ -1,14 +1,22 @@
+<!--
+1.先將每個區塊都分好-
+2.-@click="showCart = true"如果點擊icon 是true就顯示 ,商品的部分用v-for :key="product.id"
+<button type="button" class="btn btn-primary" @click="selectProduct(product)"-將選中正在考慮的(商品)放入購物車
+輸入框:<input type="text" class="form-control text-center" v-model.number="quantity" 將輸入的值轉為數字
+3.減少、移除會指定哪個商品要加參數去處理 
+--->
+
 <template>
 
     <div id="app" class="container mt-4">
-        <!-- 標題和購物車按鈕區域 -->
+
         <div class="d-flex justify-content-between align-items-center">
             <h2>精選商品</h2>
 
-            <!-- 按鈕的 click 事件會顯示購物車模態框 -->
+      
             <button type="button" class="btn btn-secondary" @click="showCart = true" data-bs-toggle="modal"
                 data-bs-target="#cartModal">
-                <!-- 使用 Font Awesome 圖標顯示購物車 -->
+                <!-- 使用 Font Awesome icon顯示購物車 -->
                 <i class="fa-solid fa-cart-shopping"></i>
             </button>
         </div>
@@ -32,13 +40,13 @@
         </div>
 
 
-        <!-- 加入購物車的模態框 -->
+        <!-- 加入購物車的model -->
         <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="productModalLabel">加入購物車</h5>
-                        <!-- 關閉模態框按鈕 -->
+                        <!-- 關閉model框按鈕 -->
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -130,12 +138,12 @@
 export default {
     data() {
         return {
-            // 商品數據
+        
             products: [
                 { id: 1, name: '迷你單朵小香花束', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
                 { id: 2, name: '單隻永生玫瑰', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
-                { id: 3, name: '永生花水氧機-薰衣草紫', price: 680, image: 'https://picsum.photos/id/237/150/150' },
-                { id: 4, name: '單隻永生玫瑰', price: 680, image: 'https://picsum.photos/id/237/150/150' },
+                { id: 3, name: '永生花水氧機-薰衣草紫', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
+                { id: 4, name: '單隻永生玫瑰', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
                 { id: 5, name: '永生花水氧機-薰衣草紫', price: 680, image: 'https://picsum.photos/id/237/150/150' },
                 { id: 6, name: '迷你單朵小香花束', price: 680, image: 'https://picsum.photos/id/237/150/150' },
                 { id: 7, name: '迷你單朵小香花束', price: 680, image: 'https://picsum.photos/id/237/150/150' },
@@ -148,7 +156,7 @@ export default {
         };
     },
     methods: {
-        //在日常生活中，選擇一本書並設置數量類似在網頁上選擇產品並設定數量。先選中一個感興趣的項目，
+        //想像，在網頁上選擇產品並設定數量。先選中一個感興趣的項目，
 
 
         selectProduct(product) {
@@ -218,13 +226,13 @@ export default {
 /* 購物車按鈕樣式 */
 .btn-secondary {
     font-size: 1.5rem;
-    /* 字體大小 */
+
     background-color: transparent;
-    /* 背景透明 */
+  
     border: none;
-    /* 去掉邊框 */
+
     cursor: pointer;
-    /* 滑鼠指標為手形 */
+    
 }
 
 /* 手機版樣式 */
@@ -251,8 +259,7 @@ export default {
     }
 }
 
-/* 卡片的圖片 */
-/* 確保所有卡片的高度一致 */
+
 .card {
     display: flex;
     flex-direction: column;
@@ -274,12 +281,12 @@ export default {
     /* 讓圖片適應容器 */
 }
 
-/* 確保內容區域的高度一致並垂直對齊 */
+
 .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* 讓內容區域在卡片內部垂直分佈 */
+  
     flex: 1;
     /* 使內容區域占據剩餘空間 */
 }
