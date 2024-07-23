@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h2>精選商品</h2>
 
-      
+
             <button type="button" class="btn btn-secondary" @click="showCart = true" data-bs-toggle="modal"
                 data-bs-target="#cartModal">
                 <!-- 使用 Font Awesome icon顯示購物車 -->
@@ -23,7 +23,7 @@
 
         <!-- 商品展示區域 -->
 
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
             <div v-for="product in products" :key="product.id">
                 <div class="card">
                     <img :src="product.image" class="card-img-top" :alt="product.name" />
@@ -93,7 +93,7 @@
                     <div class="modal-body">
                         <!-- 列出購物車中的每個商品 -->
                         <ul class="list-group">
-                            <!-- 使用 v-for 迴圈渲染每個購物車項目 -->
+                            <!-- 使用 v-for 渲染每個購物車項目 -->
                             <li v-for="item in cart" :key="item.product.id" class="list-group-item">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
@@ -138,7 +138,7 @@
 export default {
     data() {
         return {
-        
+
             products: [
                 { id: 1, name: '迷你單朵小香花束', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
                 { id: 2, name: '單隻永生玫瑰', price: 680, image: 'https://picsum.photos/seed/picsum/150/150' },
@@ -155,7 +155,14 @@ export default {
             showCart: false      // 是否顯示購物車視窗
         };
     },
+    created() {
+        let tmpData = JSON.parse(localStorage.getItem('cart'));
+        if(tmpData != null){
+            this.cart = tmpData;
+        }
+    },
     methods: {
+
         //想像，在網頁上選擇產品並設定數量。先選中一個感興趣的項目，
 
 
@@ -179,6 +186,7 @@ export default {
         },
         // 將選中的產品加入購物車
         addToCart() {
+            //
             const productInCart = this.cart.find(item => item.product.id === this.selectedProduct.id);
             if (productInCart) {
                 //添加的數量加到 購物車中該商品目前的數量 
@@ -186,18 +194,24 @@ export default {
             } else {
                 this.cart.push({ product: this.selectedProduct, quantity: this.quantity });/*參數:this.*/
             }
+           localStorage.setItem('cart',JSON.stringify(this.cart));
         },
         // 從購物車中移除產品是指因為移除商品會指定所以先設一個參數假如要移除的id跟參數一樣就移除
         //假如要移除a 那麼項目中的商品 是否等於要移除的a 如果等於就移除不等於就保留
 
         remove(productId) {
-
+            //刪除螢幕當前的購物車暫存
+            //新增信的購物車暫存
             this.cart = this.cart.filter(item => item.product.id !== productId);
+            // localStorage.removeItem('cart');
+            if (this.cart.length != 0) {
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+            }
         },
         checkout() {
             alert('結帳成功！');
             this.cart = [];
-
+            localStorage.removeItem('cart');
         }
     }
 };
@@ -228,11 +242,11 @@ export default {
     font-size: 1.5rem;
 
     background-color: transparent;
-  
+
     border: none;
 
     cursor: pointer;
-    
+
 }
 
 /* 手機版樣式 */
@@ -244,7 +258,7 @@ export default {
 }
 
 /* 平板版樣式 */
-@media (min-width: 577px) and (max-width: 768px) {
+@media (min-width:768px) and (max-width: 992px) {
     .btn-secondary {
         font-size: 1.4rem;
 
@@ -252,7 +266,7 @@ export default {
 }
 
 /* 桌機版樣式 */
-@media (min-width: 769px) {
+@media (min-width: 992px) {
     .btn-secondary {
         font-size: 1.5rem;
 
@@ -286,7 +300,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  
+
     flex: 1;
     /* 使內容區域占據剩餘空間 */
 }

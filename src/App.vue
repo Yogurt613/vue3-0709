@@ -12,7 +12,10 @@
 // import Test4 from './components/test4.vue';
 // import Test5 from './components/test5.vue';
 // import Test6 from './components/test6.vue';
-import Test7 from './components/test7.vue';
+
+// import Shopcar from './components/shopcar.vue';
+import member from './components/member.vue';
+
 
 </script>
 
@@ -21,7 +24,7 @@ import Test7 from './components/test7.vue';
     <Tt /> 
     <Test/>
     <T2/>
-    <T3/>
+    <!-- <T3/> -->
     <T4/>
     <T5/>
     <Test1/>
@@ -30,7 +33,8 @@ import Test7 from './components/test7.vue';
     <test4/>
     <test5/>
     <test6/>
-    <test7/>
+    <Shopcar/>
+    <member/>
 
   </div>
 </template>
